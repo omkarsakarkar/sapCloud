@@ -1,0 +1,11 @@
+<columns>
+  <Column>
+    <Text text="{i18n&gt;bookColumnHeader}" />
+  </Column>
+  <Column minScreenWidth="Tablet" demandPopin="true">
+    <Text text="{i18n&gt;authorColumnHeader}" />
+  </Column>
+  <Column>
+    <Text text="{i18n&gt;priceColumnHeader}" />
+  </Column>
+</columns>

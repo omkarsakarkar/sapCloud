@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <packaging>jar</packaging>
+    <groupId>org.webjars</groupId>
+    <artifactId>angular-ui-bootstrap</artifactId>
+    <version>0.10.0-1</version>
+    <name>Angular Ui Bootstrap</name>
+    <description>WebJar for Angular UI Bootstrap</description>
+    <url>http://webjars.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <angularui.bootstrap.version>0.10.0</angularui.bootstrap.version>
+        <angularui.bootstrap.sourceUrl>https://github.com/angular-ui/bootstrap/archive</angularui.bootstrap.sourceUrl>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${angularui.bootstrap.version}</destDir>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://github.com/angular-ui/bootstrap/blob/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>angularjs</artifactId>
+            <version>1.2.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+    </dependencies>
+
+    <scm>
+        <url>https://github.com/webjars/angular-ui-bootstrap</url>
+        <connection>scm:git:https://github.com/webjars/angular-ui-bootstrap.git</connection>
+        <developerConnection>scm:git:https://github.com/webjars/angular-ui-bootstrap.git</developerConnection>
+        <tag>angular-ui-bootstrap-0.10.0-1</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>smallg</id>
+            <name>Small Guo</name>
+            <email>small.guo@enovation.com.cn</email>
+        </developer>
+    </developers>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>1.0-beta-4</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${angularui.bootstrap.sourceUrl}</url>
+                            <fromFile>gh-pages.zip</fromFile>
+                            <toFile>${project.build.directory}/${project.artifactId}.zip</toFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo message="unzip archive" />
+                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
+                                <echo message="moving resources" />
+                                <copy tofile="${destDir}/ui-bootstrap.js" file="${project.build.directory}/bootstrap-gh-pages/ui-bootstrap-${angularui.bootstrap.version}.js" />
+                                <copy tofile="${destDir}/ui-bootstrap.min.js" file="${project.build.directory}/bootstrap-gh-pages/ui-bootstrap-${angularui.bootstrap.version}.min.js" />
+                                <copy tofile="${destDir}/ui-bootstrap-tpls.js" file="${project.build.directory}/bootstrap-gh-pages/ui-bootstrap-tpls-${angularui.bootstrap.version}.js" />
+                                <copy tofile="${destDir}/ui-bootstrap-tpls.min.js" file="${project.build.directory}/bootstrap-gh-pages/ui-bootstrap-tpls-${angularui.bootstrap.version}.min.js" />
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.5.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>sonatype-nexus-staging</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+               <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${destDir}</targetPath>
+            </resource>
+        </resources>
+    </build>
+</project>

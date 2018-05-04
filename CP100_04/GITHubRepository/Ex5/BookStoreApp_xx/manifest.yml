@@ -1,0 +1,16 @@
+---
+applications:
+
+- name: BookStoreApp
+  memory: 768M
+  path: target/BookStoreApp_xx-0.0.1-SNAPSHOT.jar
+  #add a timestmp as postfix to your path
+  host: BookStoreApp_050220171312
+  buildpack: sap_java_buildpack
+  services:
+    - cp10000
+  
+  env:
+    TARGET_RUNTIME: main
+    JBP_CONFIG_SAPJVM_MEMORY_SIZES: 'metaspace:96m..'
+    SPRING_PROFILES_ACTIVE: spring

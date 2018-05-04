@@ -1,0 +1,10 @@
+<items>
+  <ColumnListItem>
+    <cells>
+      <ObjectIdentifier title="{bookName}" text="{isbn}" />
+      <Text text="{authorName}" />
+      <ObjectNumber number="{ parts:[{path:'price'},{path:'priceCurrency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+      unit="{priceCurrency}" />
+    </cells>
+  </ColumnListItem>
+</items>

@@ -1,0 +1,1 @@
+, { "source": "/books_odata_v4/(.*)$", "authenticationType": "none", "destination": "service_api", "csrfProtection": false, "target": "$1" }

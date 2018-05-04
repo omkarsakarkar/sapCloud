@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue May 01 11:45:50 CEST 2018
+spring-cloud-cloudfoundry-connector-1.2.4.RELEASE.pom>repro\ spring=
+spring-cloud-cloudfoundry-connector-1.2.4.RELEASE.jar>central=
+spring-cloud-cloudfoundry-connector-1.2.4.RELEASE.pom>central=

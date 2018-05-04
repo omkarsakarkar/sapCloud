@@ -1,0 +1,49 @@
+
+
+
+
+//ZME - login via SAP Logon
+user:CP100-xx
+Passw:Welcome1
+
+
+
+
+
+//ES4
+
+URL: https://register.sapdevcenter.com/SUPSignForms/
+
+
+
+
+
+//HCI Tenant
+URL: https://v0xxx-tmn.avt.eu1.hana.ondemand.com/itspaces
+(replace the xx with your given tenentid e.g 228 or 322)
+User:p1942505455|P1940483404|P1940856774
+Passw:Welcome1|Welcome1|Welcome1234
+
+
+
+
+
+//CloudConnector 
+URL: https://wdflbmt7269:8443
+
+user:Administrator
+Passw:sap123
+
+
+
+
+
+Host ZME: ZMEtdc00.wdf.sap.corp 
+Transaction for SAP Gateway: /N/IWFND/MAINT_SERVICE
+
+
+//Mailadapter
+Address: mail.od.sap.biz
+From: mail@mail.hana.ondemand.com
+E-Mail Address and User:training.integrationservice@gmail.com
+E-Mail password:Integrationservice3

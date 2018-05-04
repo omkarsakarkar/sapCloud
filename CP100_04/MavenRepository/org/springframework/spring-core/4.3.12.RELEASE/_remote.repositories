@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue May 01 09:50:41 CEST 2018
+spring-core-4.3.12.RELEASE.pom>repro\ spring=
+spring-core-4.3.12.RELEASE.jar>central=
+spring-core-4.3.12.RELEASE.jar>repro\ spring=

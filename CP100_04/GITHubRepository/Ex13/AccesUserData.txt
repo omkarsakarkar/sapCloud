@@ -1,0 +1,11 @@
+  {
+  "securityConstraints": [{
+ "permission": "accessUserData",
+ "description": "Access User Data",
+ "protectedPaths": [
+ "/"
+ ],
+ "excludedPaths": [
+ "/logout/**"
+ ]
+ }],

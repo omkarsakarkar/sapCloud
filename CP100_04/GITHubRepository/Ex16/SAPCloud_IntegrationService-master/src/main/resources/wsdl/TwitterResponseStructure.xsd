@@ -1,0 +1,581 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="statuses" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="created_at"/>
+              <xs:element type="xs:long" name="id"/>
+              <xs:element type="xs:long" name="id_str"/>
+              <xs:element type="xs:string" name="text"/>
+              <xs:element type="xs:string" name="truncated"/>
+              <xs:element name="entities">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="hashtags" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType mixed="true">
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="text" minOccurs="0"/>
+                          <xs:element type="xs:byte" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="symbols"/>
+                    <xs:element name="user_mentions" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="screen_name"/>
+                          <xs:element type="xs:string" name="name"/>
+                          <xs:element type="xs:long" name="id"/>
+                          <xs:element type="xs:long" name="id_str"/>
+                          <xs:element type="xs:short" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="urls">
+                      <xs:complexType mixed="true">
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="url" minOccurs="0"/>
+                          <xs:element type="xs:string" name="expanded_url" minOccurs="0"/>
+                          <xs:element type="xs:string" name="display_url" minOccurs="0"/>
+                          <xs:element type="xs:short" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="media" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:long" name="id"/>
+                          <xs:element type="xs:long" name="id_str"/>
+                          <xs:element type="xs:byte" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                          <xs:element type="xs:anyURI" name="media_url"/>
+                          <xs:element type="xs:string" name="media_url_https"/>
+                          <xs:element type="xs:string" name="url"/>
+                          <xs:element type="xs:string" name="display_url"/>
+                          <xs:element type="xs:string" name="expanded_url"/>
+                          <xs:element type="xs:string" name="type"/>
+                          <xs:element name="sizes">
+                            <xs:complexType>
+                              <xs:choice maxOccurs="unbounded" minOccurs="0">
+                                <xs:element name="thumb">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:short" name="w"/>
+                                      <xs:element type="xs:short" name="h"/>
+                                      <xs:element type="xs:string" name="resize"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="medium">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:short" name="w"/>
+                                      <xs:element type="xs:short" name="h"/>
+                                      <xs:element type="xs:string" name="resize"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="small">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:short" name="w"/>
+                                      <xs:element type="xs:short" name="h"/>
+                                      <xs:element type="xs:string" name="resize"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="large">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:short" name="w"/>
+                                      <xs:element type="xs:short" name="h"/>
+                                      <xs:element type="xs:string" name="resize"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:choice>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="extended_entities" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="media" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:long" name="id"/>
+                          <xs:element type="xs:long" name="id_str"/>
+                          <xs:element type="xs:byte" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                          <xs:element type="xs:anyURI" name="media_url"/>
+                          <xs:element type="xs:string" name="media_url_https"/>
+                          <xs:element type="xs:string" name="url"/>
+                          <xs:element type="xs:string" name="display_url"/>
+                          <xs:element type="xs:string" name="expanded_url"/>
+                          <xs:element type="xs:string" name="type"/>
+                          <xs:element name="sizes">
+                            <xs:complexType>
+                              <xs:choice maxOccurs="unbounded" minOccurs="0">
+                                <xs:element name="thumb">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:short" name="w"/>
+                                      <xs:element type="xs:short" name="h"/>
+                                      <xs:element type="xs:string" name="resize"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="medium">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:short" name="w"/>
+                                      <xs:element type="xs:short" name="h"/>
+                                      <xs:element type="xs:string" name="resize"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="small">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:short" name="w"/>
+                                      <xs:element type="xs:short" name="h"/>
+                                      <xs:element type="xs:string" name="resize"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="large">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:short" name="w"/>
+                                      <xs:element type="xs:short" name="h"/>
+                                      <xs:element type="xs:string" name="resize"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:choice>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="metadata">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="iso_language_code"/>
+                    <xs:element type="xs:string" name="result_type"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="source"/>
+              <xs:element type="xs:string" name="in_reply_to_status_id"/>
+              <xs:element type="xs:string" name="in_reply_to_status_id_str"/>
+              <xs:element type="xs:string" name="in_reply_to_user_id"/>
+              <xs:element type="xs:string" name="in_reply_to_user_id_str"/>
+              <xs:element type="xs:string" name="in_reply_to_screen_name"/>
+              <xs:element name="user">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:long" name="id"/>
+                    <xs:element type="xs:long" name="id_str"/>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:string" name="screen_name"/>
+                    <xs:element type="xs:string" name="location"/>
+                    <xs:element type="xs:string" name="description"/>
+                    <xs:element type="xs:string" name="url"/>
+                    <xs:element name="entities">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="url" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="urls">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="url"/>
+                                      <xs:element type="xs:anyURI" name="expanded_url"/>
+                                      <xs:element type="xs:string" name="display_url"/>
+                                      <xs:element type="xs:byte" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="description">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="urls"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="protected"/>
+                    <xs:element type="xs:short" name="followers_count"/>
+                    <xs:element type="xs:short" name="friends_count"/>
+                    <xs:element type="xs:short" name="listed_count"/>
+                    <xs:element type="xs:string" name="created_at"/>
+                    <xs:element type="xs:short" name="favourites_count"/>
+                    <xs:element type="xs:string" name="utc_offset"/>
+                    <xs:element type="xs:string" name="time_zone"/>
+                    <xs:element type="xs:string" name="geo_enabled"/>
+                    <xs:element type="xs:string" name="verified"/>
+                    <xs:element type="xs:int" name="statuses_count"/>
+                    <xs:element type="xs:string" name="lang"/>
+                    <xs:element type="xs:string" name="contributors_enabled"/>
+                    <xs:element type="xs:string" name="is_translator"/>
+                    <xs:element type="xs:string" name="is_translation_enabled"/>
+                    <xs:element type="xs:string" name="profile_background_color"/>
+                    <xs:element type="xs:string" name="profile_background_image_url"/>
+                    <xs:element type="xs:string" name="profile_background_image_url_https"/>
+                    <xs:element type="xs:string" name="profile_background_tile"/>
+                    <xs:element type="xs:anyURI" name="profile_image_url"/>
+                    <xs:element type="xs:string" name="profile_image_url_https"/>
+                    <xs:element type="xs:string" name="profile_banner_url" minOccurs="0"/>
+                    <xs:element type="xs:string" name="profile_link_color"/>
+                    <xs:element type="xs:string" name="profile_sidebar_border_color"/>
+                    <xs:element type="xs:string" name="profile_sidebar_fill_color"/>
+                    <xs:element type="xs:string" name="profile_text_color"/>
+                    <xs:element type="xs:string" name="profile_use_background_image"/>
+                    <xs:element type="xs:string" name="has_extended_profile"/>
+                    <xs:element type="xs:string" name="default_profile"/>
+                    <xs:element type="xs:string" name="default_profile_image"/>
+                    <xs:element type="xs:string" name="following"/>
+                    <xs:element type="xs:string" name="follow_request_sent"/>
+                    <xs:element type="xs:string" name="notifications"/>
+                    <xs:element type="xs:string" name="translator_type"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="geo"/>
+              <xs:element type="xs:string" name="coordinates"/>
+              <xs:element name="place">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="id" minOccurs="0"/>
+                    <xs:element type="xs:string" name="url" minOccurs="0"/>
+                    <xs:element type="xs:string" name="place_type" minOccurs="0"/>
+                    <xs:element type="xs:string" name="name" minOccurs="0"/>
+                    <xs:element type="xs:string" name="full_name" minOccurs="0"/>
+                    <xs:element type="xs:string" name="country_code" minOccurs="0"/>
+                    <xs:element type="xs:string" name="country" minOccurs="0"/>
+                    <xs:element type="xs:string" name="contained_within" minOccurs="0"/>
+                    <xs:element name="bounding_box" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="type"/>
+                          <xs:element type="xs:float" name="coordinates" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="attributes" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="contributors"/>
+              <xs:element name="retweeted_status" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="created_at"/>
+                    <xs:element type="xs:long" name="id"/>
+                    <xs:element type="xs:long" name="id_str"/>
+                    <xs:element type="xs:string" name="text"/>
+                    <xs:element type="xs:string" name="truncated"/>
+                    <xs:element name="entities">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="hashtags">
+                            <xs:complexType mixed="true">
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="text" minOccurs="0"/>
+                                <xs:element type="xs:byte" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:string" name="symbols"/>
+                          <xs:element name="user_mentions" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="screen_name"/>
+                                <xs:element type="xs:string" name="name"/>
+                                <xs:element type="xs:long" name="id"/>
+                                <xs:element type="xs:long" name="id_str"/>
+                                <xs:element type="xs:byte" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="urls">
+                            <xs:complexType mixed="true">
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="url" minOccurs="0"/>
+                                <xs:element type="xs:string" name="expanded_url" minOccurs="0"/>
+                                <xs:element type="xs:string" name="display_url" minOccurs="0"/>
+                                <xs:element type="xs:short" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="media" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:long" name="id"/>
+                                <xs:element type="xs:long" name="id_str"/>
+                                <xs:element type="xs:byte" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                                <xs:element type="xs:anyURI" name="media_url"/>
+                                <xs:element type="xs:string" name="media_url_https"/>
+                                <xs:element type="xs:string" name="url"/>
+                                <xs:element type="xs:string" name="display_url"/>
+                                <xs:element type="xs:string" name="expanded_url"/>
+                                <xs:element type="xs:string" name="type"/>
+                                <xs:element name="sizes">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="small">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:short" name="w"/>
+                                            <xs:element type="xs:short" name="h"/>
+                                            <xs:element type="xs:string" name="resize"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="thumb">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:short" name="w"/>
+                                            <xs:element type="xs:short" name="h"/>
+                                            <xs:element type="xs:string" name="resize"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="large">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:short" name="w"/>
+                                            <xs:element type="xs:short" name="h"/>
+                                            <xs:element type="xs:string" name="resize"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="medium">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:short" name="w"/>
+                                            <xs:element type="xs:short" name="h"/>
+                                            <xs:element type="xs:string" name="resize"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="extended_entities" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="media">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:long" name="id"/>
+                                <xs:element type="xs:long" name="id_str"/>
+                                <xs:element type="xs:byte" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                                <xs:element type="xs:anyURI" name="media_url"/>
+                                <xs:element type="xs:string" name="media_url_https"/>
+                                <xs:element type="xs:string" name="url"/>
+                                <xs:element type="xs:string" name="display_url"/>
+                                <xs:element type="xs:string" name="expanded_url"/>
+                                <xs:element type="xs:string" name="type"/>
+                                <xs:element name="sizes">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="small">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:short" name="w"/>
+                                            <xs:element type="xs:short" name="h"/>
+                                            <xs:element type="xs:string" name="resize"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="thumb">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:short" name="w"/>
+                                            <xs:element type="xs:short" name="h"/>
+                                            <xs:element type="xs:string" name="resize"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="large">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:short" name="w"/>
+                                            <xs:element type="xs:short" name="h"/>
+                                            <xs:element type="xs:string" name="resize"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="medium">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:short" name="w"/>
+                                            <xs:element type="xs:short" name="h"/>
+                                            <xs:element type="xs:string" name="resize"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="metadata">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="iso_language_code"/>
+                          <xs:element type="xs:string" name="result_type"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="source"/>
+                    <xs:element type="xs:string" name="in_reply_to_status_id"/>
+                    <xs:element type="xs:string" name="in_reply_to_status_id_str"/>
+                    <xs:element type="xs:string" name="in_reply_to_user_id"/>
+                    <xs:element type="xs:string" name="in_reply_to_user_id_str"/>
+                    <xs:element type="xs:string" name="in_reply_to_screen_name"/>
+                    <xs:element name="user">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:long" name="id"/>
+                          <xs:element type="xs:long" name="id_str"/>
+                          <xs:element type="xs:string" name="name"/>
+                          <xs:element type="xs:string" name="screen_name"/>
+                          <xs:element type="xs:string" name="location"/>
+                          <xs:element type="xs:string" name="description"/>
+                          <xs:element type="xs:string" name="url"/>
+                          <xs:element name="entities">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="url" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="urls">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="url"/>
+                                            <xs:element type="xs:anyURI" name="expanded_url"/>
+                                            <xs:element type="xs:string" name="display_url"/>
+                                            <xs:element type="xs:byte" name="indices" maxOccurs="unbounded" minOccurs="0"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="description">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="urls"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:string" name="protected"/>
+                          <xs:element type="xs:int" name="followers_count"/>
+                          <xs:element type="xs:short" name="friends_count"/>
+                          <xs:element type="xs:short" name="listed_count"/>
+                          <xs:element type="xs:string" name="created_at"/>
+                          <xs:element type="xs:short" name="favourites_count"/>
+                          <xs:element type="xs:string" name="utc_offset"/>
+                          <xs:element type="xs:string" name="time_zone"/>
+                          <xs:element type="xs:string" name="geo_enabled"/>
+                          <xs:element type="xs:string" name="verified"/>
+                          <xs:element type="xs:short" name="statuses_count"/>
+                          <xs:element type="xs:string" name="lang"/>
+                          <xs:element type="xs:string" name="contributors_enabled"/>
+                          <xs:element type="xs:string" name="is_translator"/>
+                          <xs:element type="xs:string" name="is_translation_enabled"/>
+                          <xs:element type="xs:string" name="profile_background_color"/>
+                          <xs:element type="xs:string" name="profile_background_image_url"/>
+                          <xs:element type="xs:string" name="profile_background_image_url_https"/>
+                          <xs:element type="xs:string" name="profile_background_tile"/>
+                          <xs:element type="xs:anyURI" name="profile_image_url"/>
+                          <xs:element type="xs:string" name="profile_image_url_https"/>
+                          <xs:element type="xs:string" name="profile_banner_url" minOccurs="0"/>
+                          <xs:element type="xs:string" name="profile_link_color"/>
+                          <xs:element type="xs:string" name="profile_sidebar_border_color"/>
+                          <xs:element type="xs:string" name="profile_sidebar_fill_color"/>
+                          <xs:element type="xs:int" name="profile_text_color"/>
+                          <xs:element type="xs:string" name="profile_use_background_image"/>
+                          <xs:element type="xs:string" name="has_extended_profile"/>
+                          <xs:element type="xs:string" name="default_profile"/>
+                          <xs:element type="xs:string" name="default_profile_image"/>
+                          <xs:element type="xs:string" name="following"/>
+                          <xs:element type="xs:string" name="follow_request_sent"/>
+                          <xs:element type="xs:string" name="notifications"/>
+                          <xs:element type="xs:string" name="translator_type"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="geo"/>
+                    <xs:element type="xs:string" name="coordinates"/>
+                    <xs:element type="xs:string" name="place"/>
+                    <xs:element type="xs:string" name="contributors"/>
+                    <xs:element type="xs:string" name="is_quote_status"/>
+                    <xs:element type="xs:byte" name="retweet_count"/>
+                    <xs:element type="xs:short" name="favorite_count"/>
+                    <xs:element type="xs:string" name="favorited"/>
+                    <xs:element type="xs:string" name="retweeted"/>
+                    <xs:element type="xs:string" name="possibly_sensitive" minOccurs="0"/>
+                    <xs:element type="xs:string" name="lang"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="is_quote_status"/>
+              <xs:element type="xs:byte" name="retweet_count"/>
+              <xs:element type="xs:byte" name="favorite_count"/>
+              <xs:element type="xs:string" name="favorited"/>
+              <xs:element type="xs:string" name="retweeted"/>
+              <xs:element type="xs:string" name="possibly_sensitive" minOccurs="0"/>
+              <xs:element type="xs:string" name="lang"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="search_metadata">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:float" name="completed_in"/>
+              <xs:element type="xs:long" name="max_id"/>
+              <xs:element type="xs:long" name="max_id_str"/>
+              <xs:element type="xs:string" name="next_results"/>
+              <xs:element type="xs:string" name="query"/>
+              <xs:element type="xs:string" name="refresh_url"/>
+              <xs:element type="xs:byte" name="count"/>
+              <xs:element type="xs:byte" name="since_id"/>
+              <xs:element type="xs:byte" name="since_id_str"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

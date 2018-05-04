@@ -1,0 +1,38 @@
+
+--Bookstore App--
+
+//Navigate to the BookstoreApp_xx path with the POM file
+
+cd N:\'.\My Documents'\CP100_04\GITHubRepository\Ex5\BookStoreApp_xx
+
+
+//Build BookStoreApp_xx
+
+mvn --settings N:\'.\My Documents'\CP100_04\MavenRepository\settings.xml  -P neo clean package
+
+
+
+--Music App--
+
+//Navigate to the MusicApp_xx path with the POM file
+
+cd N:\'.\My Documents'\CP100_04\GITHubRepository\Ex6\MusicApp_xx
+
+
+//Build MusicApp_xx
+
+mvn --settings N:\'.\My Documents'\CP100_04\MavenRepository\settings.xml  clean package
+
+
+--Cloud Foundry--
+
+cf api https://api.cf.eu10.hana.ondemand.com
+cf login ( enter your SAP CP login eMail and the password)
+cf push 
+
+
+
+
+
+
+

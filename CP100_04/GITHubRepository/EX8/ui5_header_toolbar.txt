@@ -1,0 +1,11 @@
+<headerToolbar>
+  <Toolbar width="100%" id="__toolbar3">
+    <content>
+      <Bar id="__bar1">
+        <contentLeft>
+          <Title text="{i18n&gt;tableTitle}" width="100%" id="__title1" />
+        </contentLeft>
+      </Bar>
+    </content>
+  </Toolbar>
+</headerToolbar>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://sapcd.com/Ticketagt"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://sapcd.com/Ticketagt"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:n1="https://Ticketschemas.netweaver.neo.com/Ticketflow">
+
+	<wsdl:documentation>Banking Services Network Operations - WSDL with no
+		policies - meant to be used
+		as abstract WSDL
+	</wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema targetNamespace="https://Ticketschemas.netweaver.neo.com/Ticketflow"
+			xmlns:xi0="https://Ticketschemas.netweaver.neo.com/Ticketflow" xmlns:xi1="http://sapcd.com/Ticketagt"
+			xmlns="https://Ticketschemas.netweaver.neo.com/Ticketflow">
+			<xsd:import namespace="http://sapcd.com/Ticketagt" />
+			<xsd:element name="StadiumMessage" type="xi1:StadiumMessage" />
+		</xsd:schema>
+		<xsd:schema targetNamespace="http://sapcd.com/Ticketagt"
+			xmlns:xi0="https://Ticketschemas.netweaver.neo.com/Ticketflow" xmlns:xi1="http://sapcd.com/Ticketagt"
+			xmlns="http://sapcd.com/Ticketagt">
+		<xsd:complexType name="StadiumMessage">
+ 			<xsd:annotation>
+  			<xsd:documentation xml:lang="EN">Structure of the Generic Ticket Message</xsd:documentation> 
+  			</xsd:annotation>
+ 			<xsd:sequence>
+  				<xsd:element name="SenderId" type="SenderId" /> 
+ 				<xsd:element name="ReceiverId" type="ReceiverId" /> 
+  				<xsd:element name="TicketType" type="TicketType" /> 
+ 				<xsd:element name="FileName" type="FileName" /> 
+ 				<xsd:element name="NumberOfTickets" type="NumberOfTickets" /> 
+  				<xsd:element name="TicketPrice" type="TicketPrice" /> 
+  				<xsd:element name="MessageContent" type="MessageContent" /> 
+  			</xsd:sequence>
+  			</xsd:complexType>
+ 			<xsd:simpleType name="ReceiverId">
+ 				<xsd:annotation>
+ 				 <xsd:documentation xml:lang="EN">Receiver of this Message</xsd:documentation> 
+  				</xsd:annotation>
+  				<xsd:restriction base="xsd:string" /> 
+ 			 </xsd:simpleType>
+			<xsd:simpleType name="SenderId">
+ 				<xsd:annotation>
+  					<xsd:documentation xml:lang="EN">Sender of this Message</xsd:documentation> 
+  				</xsd:annotation>
+  				<xsd:restriction base="xsd:string" /> 
+  			</xsd:simpleType>
+			<xsd:simpleType name="FileName">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN"> Set out of the
+						filename
+						defined during format creation.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string" />
+			</xsd:simpleType>
+			<xsd:simpleType name=" NumberOfTickets ">
+				<xsd:annotation>
+  					<xsd:documentation xml:lang="EN">Number of Tickets inside the MessageContent </xsd:documentation> 
+ 				 </xsd:annotation>
+ 				 <xsd:restriction base="xsd:integer" /> 
+  			</xsd:simpleType>
+			<xsd:simpleType name="MessageContent">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Message string in the
+						Inbound Message.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string" />
+			</xsd:simpleType>
+			<xsd:simpleType name="TicketPrice">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">
+						For tracking purposes
+						this is currently defined as a unique ID per corporate.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string" />
+			</xsd:simpleType>
+			<xsd:simpleType name="TicketType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Type tag that
+						indicates the type of message.
+						Possible values for tag TicketType
+						need to be defined between Ticket Agent and Ticket.
+						See the Ticket Agent
+						specification
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string" />
+			</xsd:simpleType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="StadiumMessage">
+		<wsdl:documentation>Message for TechEd Ticket Scenario</wsdl:documentation>
+		<wsdl:part name="StadiumMessage" element="n1:StadiumMessage" />
+	</wsdl:message>
+
+	<wsdl:portType name="TicketInterface_In">
+		<wsdl:operation name="TicketOperation">
+			<wsdl:input message="tns:StadiumMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="TicketBinding" type="tns:TicketInterface_In">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<wsdl:operation name="TicketOperation">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="TicketService">
+		<wsdl:port name="TicketPort" binding="tns:TicketBinding">
+			<soap:address
+				location="https://Ticketflow-hsbc.netweaver.neo.com/TicketInterface" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

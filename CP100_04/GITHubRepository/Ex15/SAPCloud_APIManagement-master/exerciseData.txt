@@ -1,0 +1,40 @@
+//Development CONNECTION
+Host: zme.virtual  ( is defined as Destination with Cloud Connector)
+Port:8000 ( is defined as Destination with Cloud Connector)
+
+//Development Authentication
+Authenicaten Type : Basic
+UserName:CP100-##
+Password:Welcome1 ( will be provided)
+
+//Development Authentication
+Path Prefix:/sap/opu/odata
+Service Collection URL:	/IWFND/CATALOGSERVICE/ServiceCollection
+Catalog URL will be generate
+
+// Credentials policy
+<AssignMessage async="false" continueOnError="false" enabled="true" 
+xmlns='http://www.sap.com/apimgmt'>
+   <AssignVariable>
+       <Name>basicAuth.username</Name>
+       <Value>cp100-xx</Value>
+   </AssignVariable>
+   <AssignVariable>
+       <Name>basicAuth.password</Name>
+       <Value>Welcome1</Value>
+   </AssignVariable>
+       <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+       <AssignTo createNew="false" type="request"></AssignTo>
+</AssignMessage>
+
+
+//SetBasicAuthentication policy
+<BasicAuthentication async='true' continueOnError='false' 
+enabled='true' xmlns='http://www.sap.com/apimgmt'>
+        <Operation>Encode</Operation>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+        <User ref='basicAuth.username'></User>
+        <Password ref='basicAuth.password'></Password>
+        <Source>request.header.Authorization</Source>
+        <AssignTo createNew="false">request.header.Authorization</AssignTo>
+</BasicAuthentication>

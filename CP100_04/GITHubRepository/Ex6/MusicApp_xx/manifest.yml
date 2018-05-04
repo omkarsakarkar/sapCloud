@@ -1,0 +1,13 @@
+applications:
+
+- name: MusicApp_xx
+  memory: 768M
+  path: /target/musicapp-0.0.1-SNAPSHOT.jar
+  host: MusicApp_07_180220181330
+  buildpack: sap_java_buildpack
+ # services:
+  #- mongodb
+  env:
+    TARGET_RUNTIME: main
+    JBP_CONFIG_SAPJVM_MEMORY_SIZES: 'metaspace:96m..'
+   # SPRING_PROFILES_ACTIVE: mongodb

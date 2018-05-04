@@ -1,0 +1,2 @@
+<Table id="booksTable" inset="false" items="{ path: '/Book' }" width="auto">
+</Table>

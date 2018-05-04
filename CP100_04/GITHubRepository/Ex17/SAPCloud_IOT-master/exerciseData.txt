@@ -1,0 +1,25 @@
+//iotmms Java App URL
+https://iotmms<your account>.int.sap.hana.ondemand.com/com.sap.iotservices.mms
+
+// Postman Account
+user: cp100-00
+password:cp100-00
+
+
+// Send Data with Postman
+URL: https://iotmms<your account>.hanatrial.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/< your Devive ID>
+
+{
+    "mode": "sync",
+    "messageType": "<your_message_type_id>",
+    "messages": [{
+            "sensortype": "temperature",
+            "sensorvalue": 25,
+            "timestamp": 1475676704
+    }]
+}
+
+//Use Pre-request Script
+postman.setGlobalVariable("timestamp", Math.floor(new 
+Date().getTime() / 1000));
+postman.setGlobalVariable("sensorvalue", Math.random()*30);
